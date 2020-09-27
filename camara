@@ -1,0 +1,16 @@
+import cv2
+
+camera = cv2.VideoCapture(0)
+
+
+while True:
+    #cv2.imwrite('camara.png',img)
+    b,img = camera.read()
+    cv2.imshow('programa',img)
+
+    if cv2.waitKey(1) == ord('x'):
+        break
+
+camera.release()
+cv2.destroyAllWindows()
+print("El programa ha sido finalziado correctamente.")
