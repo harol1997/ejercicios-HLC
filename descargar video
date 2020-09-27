@@ -1,0 +1,6 @@
+from pytube import YouTube
+
+yt = YouTube('https://www.youtube.com/watch?v=Qh6O5rOYEuw')
+streams = yt.streams.first()
+streams.download()
+print("El video se ha descargado satisfactoriamente")
