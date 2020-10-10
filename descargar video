@@ -1,6 +1,42 @@
 from pytube import YouTube
+import os
 
-yt = YouTube('https://www.youtube.com/watch?v=Qh6O5rOYEuw')
-streams = yt.streams.first()
-streams.download()
-print("El video se ha descargado satisfactoriamente")
+def download_youtube(url):
+    if 'https://www.youtube.com/watch?v=' in url:
+
+        yt = YouTube(url)
+        print("Se descargará la canción: ",yt.title)
+        print("Autor:",yt.author)
+        print("La duración del video es: ",yt.length,"segundos.")
+        print("Descargando...")
+        stream = yt.streams.first()
+        
+        ruta_decision = input("Desea guardarlo en una ruta especifica? y/n ")
+        if ruta_decision == "y":
+            ruta = input("Ingrese la ruta: ")
+            ruta_salida = stream.download(ruta)
+        else:
+            ruta_salida = stream.download()
+        
+        print("El video se ha descargado satisfactoriamente en:",ruta_salida)
+    else:
+        print("Entrada no válida.")
+a = 1 
+while a == 1:
+    #presentacion de mi programa
+    os.system("cls")
+    print("Bienvenido a Descargas de Youtube")
+    url = input("Ingrese el url a descargar: ")
+    #presentacion de mi programa
+
+    #ejecutar mi función
+    download_youtube(url)
+    #ejecutar mi función
+
+    seguir = input("Desea descargar otro video? y/n ")
+
+    if seguir == 'n':
+        break
+    
+os.system('cls')
+print("El programa ha finalizado.")
